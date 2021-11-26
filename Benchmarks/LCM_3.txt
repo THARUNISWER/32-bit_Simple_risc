@@ -1,0 +1,39 @@
+.main:
+       mov r0, 2           
+       mov r2, r0         
+       mov r3, r0         
+       mov r0, 3           
+       mov r1, r0       
+       mov r0, r2         
+
+       call .lcm
+
+       mov r0, 5           
+       mov r2, r0         
+       mov r3, r0      
+       mov r0, r6          
+       mov r1, r0       
+       mov r0, r2
+
+       call .lcm         
+       b .end
+
+.lcm:
+       sub r0, r0, r1          
+       cmp r0, r7
+       bgt .lcm        
+       add r0, r0, r1 B         
+       cmp r0, r7          
+       beq .op           
+       mov r0, r3         
+       add r0, r0, r2           
+       mov r3, r0        
+       b. lcm
+
+OP:    
+       mov r0, r3 
+       mov r8, r0        # Final Answer
+       ret
+
+.end:
+       b.end
