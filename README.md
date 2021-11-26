@@ -8,5 +8,7 @@ The various components of the processor can be found in `Simple_risc`. The follo
 - Memory Access (MA) stage 
 - Read-Write (RW) stage
 
+The ALU, Control Unit, Forwarding Unit, Data Lock Unit and Latches were also implemented and are present in `RiscProcessor.circ`
+
 The SimpleRISC codes that were used to evaluate and benchmark the processor can be found in `Benchmarks`. Additionally, an assembler was created to convert the assembly language code to machine code and can be accessed from the `Assembler.py` file.
 
