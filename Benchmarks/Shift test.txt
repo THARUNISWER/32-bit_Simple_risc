@@ -1,0 +1,26 @@
+#shift test(testing lsl,lsr,asr vigorously)
+mov r1,1
+mov r2,-256
+mov r5,0
+
+.lsl:
+lsl r1,r1,1 	#r1 is 2
+cmp r1,256
+beq .lsr	#r1 is 256
+b .lsl
+
+.lsr:
+lsr r1,r1,1	#r1 is 128
+cmp r1,1	
+beq .asr	#r1 is 1
+b .lsr
+
+.asr:
+asr r2,r2,1	#r2 is -128
+cmp r2,-1
+beq .exit	#r2 is 1(end)
+b .asr
+
+.exit:
+
+# no of instructions:15 effective no of instructions:96

@@ -1,0 +1,48 @@
+#Data hazard test(testing arrays)
+.text
+
+mov r5,0
+nop
+nop
+nop
+add r1,r5,4   # r1 is 4
+st r1,0[r1]
+ld r2,0[r1]
+add r2,r2,-4  	# r2 is 0
+add r0,r5,0	#r0 is 0
+# Hazards
+add r1,r0,1	# r1 is 1
+add r0,r0,r1	# r0 is 1
+add r2,r2,4	# r2 is 4
+st r0,0[r2]
+
+
+add r3,r1,1	#r3 is 2
+#Hazard
+add r0,r0,r3	#r0 is 3
+add r2,r2,4	#r2 is 8
+st r0,0[r2]
+
+add r4,r3,1	#r4 is 3
+#Hazard
+add r0,r0,r4	#r0 is 6
+add r2,r2,4	# r2 is 12
+st r0,0[r2]
+
+add r5,r4,1	#r5 is 4
+#Hazard
+add r0,r0,r4	#r0 is 10
+add r2,r2,4	#r2 is 16(0x00000010)
+st r0,0[r2]
+
+add r6,r5,1   	#r6 is 5
+#Hazard
+add r0,r0,r1	# r0 is 15(0x0000000a)
+add r2,r2,4	# r2 is 20(0x00000014)
+st r0,0[r2]
+
+add r0,r5,0	#r0 is 4 (end)
+.exit
+
+	#no of instructions: 30
+

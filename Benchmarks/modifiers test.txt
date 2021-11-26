@@ -1,0 +1,11 @@
+#modifiers test
+
+movh r1,1
+add r1,r1,10
+#r1's value is 65546 or 0x0001000a
+
+movu r2,-20
+#r2's value 65516 or 0x0000ffec (end)
+
+# no of instructions: 3
+

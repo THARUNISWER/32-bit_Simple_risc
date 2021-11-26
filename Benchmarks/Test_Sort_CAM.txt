@@ -1,0 +1,42 @@
+.main:
+    mov r0,0                  
+    mov r1,a0
+    st r1,0[r0]
+    mov r1,a1
+    st r1,4[r0]
+    mov r1,a2
+    st r1,8[r0]
+    mov r1,a3
+    st r1,12[r0]
+    mov r1,a4
+    st r1,16[r0]
+    mov r1,5
+    st r1,20[r0]
+    mov r2,0       #Starting address of the array
+    mov r3,6       #Can add more numbers
+    call .bubblesort
+    mov r8,1	#(end)
+    .terminate:
+        b .terminate            
+.bubblesort:
+    mov r4,r3      
+    .traverse:
+        ld r5,0[r2]           
+        ld r6,4[r2]           
+        cmp r5,r6             
+        bgt .exchange          
+        b .next                
+        .exchange:
+            st r6,0[r2]
+            st r5,4[r2]
+        .next:
+            add r2,r2,4   
+            sub r4,r4,1   
+            cmp r4,1   
+            bgt .traverse
+            mov r2,r0  
+            sub r3,r3,1  
+            mov r4,r3  
+            cmp r3,1   
+            bgt .traverse
+            ret

@@ -1,0 +1,37 @@
+#This program checks if beq ,bgt, add instruction's functioning
+.instr
+mov r5,0
+add r0,r5,1	#r0 is 1
+add r2,r5,255	#r2 is 0x00000100
+add r1,r5,1	#r1 is 1
+add r3,r5,3	#r3 is 3
+cmp r0,r2	# all flag 0
+beq .N1		# not taken
+cmp r0,r0	
+beq .N1		# taken
+#not executed
+add r1,r5,1
+add r2,r5,2
+add r3,r5,3
+
+.N1:
+	add r1,r1,r0	# r1 is 2
+	add r0,r1,1	# r0 is 3
+
+cmp r1,r1
+bgt .N2
+cmp r2,r1
+bgt .N2
+#not executed
+add r1,r5,1
+add r2,r5,2
+add r3,r5,3
+
+.N2:
+	add r0,r5,r3    #r0 is 3
+	add r0,r5,1	# r0 is 1
+
+add r0,r5,10	#r0 is 10(0x0000000a) (end)
+
+.exit
+	#no of instructions:24, no of instructions executed:18

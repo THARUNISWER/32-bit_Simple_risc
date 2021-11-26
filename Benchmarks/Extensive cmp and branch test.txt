@@ -1,0 +1,34 @@
+#test for cmp,bgt,beq,b instructions
+mov r1,1
+mov r2,2
+mov r3,3
+mov r4,4
+mov r5,0
+
+.loop
+	cmp r1,5	
+	beq .next	#not taken until r1 is 5
+	add r1,r1,1
+	b .loop
+
+.next
+	sub r4,r4,1
+	cmp r4,1
+	bgt .next	#r4 becomes 1
+
+.compare
+	cmp r1,r4
+	cmp r2,r3
+	cmp r1,r5
+	bgt .move
+
+.move
+	cmp r1,r1
+	cmp r2,r2
+	beq .exit
+	# not executed
+	b .move
+.exit
+	mov r2,10 (#r2 is 0x0000000a)(end)
+	
+	#no of instructions:21, effective instructions executed:40

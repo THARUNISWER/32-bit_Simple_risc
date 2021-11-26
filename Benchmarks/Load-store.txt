@@ -1,0 +1,13 @@
+.main:
+     mov r0, 0	
+     mov r1, 7
+     mov r2, 8
+     st r1, 24[r0]
+     st r2, 28[r0]
+     ld r4, 24[r0]
+     ld r3, 28[r0]
+     add r5, r4, r3  #r5 is 15 (0x0000000f)(end)
+  
+.end:
+ 
+	#no of instructions: 8

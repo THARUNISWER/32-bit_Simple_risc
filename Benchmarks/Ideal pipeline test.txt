@@ -1,0 +1,17 @@
+#Ideal pipeline test ,all sequential instructions tested free of hazards
+mov r0,0
+mov r1,1
+mov r2,2
+mov r3,4
+add r0,r0,3	# r0 is 3
+sub r1,r1,1	# r1 is 2
+mul r2,r2,2	# r2 is 4
+div r3,r3,-1	# r3 is 3
+st r0,1[r0]
+lsr r2,r2,2	# r2 is 1
+asr r3,r3,1	# r3 is 1
+ld r1,4[r1]
+nop
+lsl r0,r0,2	# r0 is 12(0x0000000c)(end)
+
+# no of instructions: 14

@@ -1,0 +1,35 @@
+#call and ret test
+
+mov r1,2
+mov r2,3
+mov r3,1
+mov r5,0
+nop
+b .caller1
+.foo
+	add r1,r1,r2 #r1 is 5
+	ret
+
+.caller1
+	call .foo
+ 
+
+b .caller2
+.boo
+	add r2,r2,r1 #r2 is 5
+	ret
+
+.caller2
+	call .boo
+
+b .caller3
+.zoo
+	sub r2,r2,r3 #r2 is 4(0x00000004)
+	ret
+.caller3
+	call .zoo
+
+mov r3,10	#r3 is (0x0000000a)(end)
+.exit
+
+	#no of instructions: 18

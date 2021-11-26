@@ -1,0 +1,20 @@
+.main:
+    mov r2, 2
+    mov r3, 3
+    mov r5, 5
+    mov r6, 6
+    mov r9, 9
+    mov r10, 10
+    call .foo
+    add r1, r2, r3	# r1 is now 5(0x00000005)
+    sub r0, r1, r6	# r0 is -1(0xffffffff)
+    div r11, r1, r0	#r11 is (0xfffffffb)
+    mod r12, r1, r2    # r12 is (0x00000001) END
+    b .end
+.foo:
+    mul r8, r9, r10     # r8 is 0x0000005a
+    ret
+
+.end:
+
+	#no of instructions:14
