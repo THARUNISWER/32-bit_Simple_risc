@@ -1,5 +1,5 @@
 # 32-bit_Simple_RISC
-A 32-bit processor in Logisim that with a 5-stage pipeline structure.
+A 32-bit processor in Logisim with a 5-stage pipeline structure.
 
 The various components of the processor can be found in `Simple_risc`. The following stages of the 5-stage pipeline were implemented:
 - Instruction Fetch (IF) stage
